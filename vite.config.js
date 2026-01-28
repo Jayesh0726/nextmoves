@@ -21,15 +21,32 @@ export default defineConfig({
     // Optimize chunk size
     rollupOptions: {
       output: {
-        manualChunks: {
-          'react-vendor': ['react', 'react-dom'],
-          'three-vendor': ['three', '@react-three/fiber'],
-          'animation-vendor': ['gsap', '@gsap/react', 'motion', 'lenis'],
+        manualChunks: (id) => {
+          // Vendor chunks
+          if (id.includes('node_modules/react')) {
+            return 'react-vendor';
+          }
+          if (id.includes('node_modules/three')) {
+            return 'three-vendor';
+          }
+          if (id.includes('node_modules/@react-three')) {
+            return 'three-vendor';
+          }
+          if (id.includes('node_modules/gsap') || id.includes('node_modules/@gsap') || id.includes('node_modules/motion') || id.includes('node_modules/lenis')) {
+            return 'animation-vendor';
+          }
+          if (id.includes('node_modules/@splinetool')) {
+            return 'spline-vendor';
+          }
+          // Separate components
+          if (id.includes('components')) {
+            return 'components';
+          }
         },
       },
     },
-    // Increase chunk size warning limit
-    chunkSizeWarningLimit: 1000,
+    // Increase chunk size warning limit to reduce warnings
+    chunkSizeWarningLimit: 2000,
     // Use esbuild for faster minification (default)
     minify: 'esbuild',
   },
