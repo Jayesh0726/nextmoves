@@ -8,7 +8,7 @@ import Industries from '../components/Industries.jsx'
 import CaseStudy from '../components/CaseStudy.jsx'
 import Roadmaps from '../components/Roadmaps.jsx'
 import Blog from '../components/Blog.jsx'
-
+import Footer from '../components/Footer.jsx'
 gsap.registerPlugin(ScrollTrigger)
 
 function Home() {
@@ -60,6 +60,7 @@ function Home() {
       <CaseStudy />
       <Roadmaps />
       <Blog />
+      <Footer />
     </div>
   )
 }

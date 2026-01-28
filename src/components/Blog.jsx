@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
-
+import SpotLight from './Spotlight.jsx';
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Blog() {
@@ -65,7 +65,9 @@ export default function Blog() {
   ];
 
   return (
-    <div className="w-full bg-[#050505] px-[3vw] py-32">
+    <div className="w-full relative bg-gradient-to-b from-[#050505] to-[#000000] px-[3vw] py-32">
+      
+      <SpotLight bgcolor={"bg-gray-100"} height={"h-36"} width={"w-36"} blur={"blur-[150px]"} left={"left-[1%]"} top={"top-[13%]"} translateX={"translate-x-[0%]"} translateY={"translate-y-[0%]"}/>
       {/* Header */}
       <div className="w-full flex flex-col items-center justify-center mb-20">
         <h1 className="font-neum text-[8vw] md:text-[6vw] text-center mb-6  bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-600 uppercase">

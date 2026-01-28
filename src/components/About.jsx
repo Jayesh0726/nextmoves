@@ -1,12 +1,35 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useRef, useEffect } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { useGSAP } from '@gsap/react'
+import SplitType from 'split-type'
 
 gsap.registerPlugin(ScrollTrigger)
 
 function About() {
   const statsRef = useRef(null)
+  const descriptionRef = useRef(null)
 
+  // Text animation effect
+  useGSAP(() => {
+    const descriptionEl = descriptionRef.current
+    if (!descriptionEl) return
+
+    const splitText = new SplitType(descriptionEl, { types: 'chars,words' })
+
+    gsap.from(splitText.chars, {
+      scrollTrigger: {
+        trigger: descriptionEl,
+        start: 'top 80%',
+        end: 'top 50%',
+        scrub: 0.5,
+      },
+      opacity: 0.3,
+      stagger: 0.05,
+    })
+  }, [descriptionRef])
+
+  // Stats counter animation
   useEffect(() => {
     const statsEl = statsRef.current
     if (!statsEl) return
@@ -27,7 +50,7 @@ function About() {
             start: 'top 90%',
             end: 'bottom 55%',
             scrub: true,
-            once: true,            
+            once: true,
           },
           onUpdate: function () {
             el.innerText = Math.floor(this.targets()[0].innerText)
@@ -58,7 +81,10 @@ function About() {
 
           {/* Right Side */}
           <div className="flex flex-col justify-start">
-            <p className="text-gray-300 text-lg leading-relaxed mb-4">
+            <p 
+              ref={descriptionRef}
+              className="text-gray-300 text-xl leading-relaxed mb-4"
+            >
               At Nexmove, we are here to be your go-to for all things IT! Now innovate, adapt, and defeat all tech challenges with our tailored IT solutions, whether digital services, software development, cybersecurity or cloud computing. Let us handle all the tech stuff while you focus on what you do best – driving and propelling your business forward.
             </p>
             <button className="text-white border-b-2 border-white pb-2 w-fit font-semibold tracking-wider hover:opacity-70 transition-opacity">
