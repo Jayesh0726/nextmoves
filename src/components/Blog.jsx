@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
-import SpotLight from './Spotlight.jsx';
+import SpotLight from './SpotLight.jsx';
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Blog() {
