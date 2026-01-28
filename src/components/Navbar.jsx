@@ -1,17 +1,35 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { NoiseBackground } from './ui/noise-background.jsx';
+
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [blur, setBlur] = useState(0);
+  const rafIdRef = useRef(null);
 
   useEffect(() => {
+    let lastScrollY = 0;
+
     const handleScroll = () => {
-      const scrollY = window.scrollY;
-      setBlur(Math.min(scrollY / 100, 1)); // Adjust the divisor for sensitivity
+      lastScrollY = window.scrollY;
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    // Use requestAnimationFrame to throttle scroll updates
+    const updateBlur = () => {
+      setBlur(Math.min(lastScrollY / 100, 1));
+      rafIdRef.current = requestAnimationFrame(updateBlur);
+    };
+
+    // Start the animation loop
+    rafIdRef.current = requestAnimationFrame(updateBlur);
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      if (rafIdRef.current) {
+        cancelAnimationFrame(rafIdRef.current);
+      }
+    };
   }, []);
 
   return (

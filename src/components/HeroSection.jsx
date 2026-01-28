@@ -4,9 +4,20 @@ import Spline from '@splinetool/react-spline';
 const HeroSection = memo(function HeroSection() {
   const [sceneUrl, setSceneUrl] = useState('');
   const [isMobile, setIsMobile] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    setSceneUrl(`https://prod.spline.design/Z6pKUxTWimjVS57c/scene.splinecode`);
+    // Use cached scene URL to avoid repeated API calls
+    const SPLINE_SCENE_URL = 'https://prod.spline.design/Z6pKUxTWimjVS57c/scene.splinecode';
+    
+    // Check if URL is cached in sessionStorage
+    const cachedUrl = sessionStorage.getItem('splineSceneUrl');
+    if (cachedUrl) {
+      setSceneUrl(cachedUrl);
+    } else {
+      setSceneUrl(SPLINE_SCENE_URL);
+      sessionStorage.setItem('splineSceneUrl', SPLINE_SCENE_URL);
+    }
     
     // Detect if device is mobile/touch
     const checkMobile = () => {
@@ -39,7 +50,10 @@ const HeroSection = memo(function HeroSection() {
             pointerEvents: isMobile ? 'none' : 'auto',
           }}
         >
-          <Spline scene={sceneUrl} />
+          <Spline 
+            scene={sceneUrl}
+            onLoad={() => setIsLoading(false)}
+          />
         </div>
       )}
     </div>

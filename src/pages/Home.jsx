@@ -1,14 +1,23 @@
-import React, { useRef, useEffect } from 'react'
+import React, { useRef, useEffect, lazy, Suspense } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import SplineScene from '../components/HeroSection.jsx'
-import About from '../components/About.jsx'
-import HWD from '../components/HWD.jsx'
-import Industries from '../components/Industries.jsx'
-import CaseStudy from '../components/CaseStudy.jsx'
-import Roadmaps from '../components/Roadmaps.jsx'
-import Blog from '../components/Blog.jsx'
 import Footer from '../components/Footer.jsx'
+
+const About = lazy(() => import('../components/About.jsx'))
+const HWD = lazy(() => import('../components/HWD.jsx'))
+const Industries = lazy(() => import('../components/Industries.jsx'))
+const CaseStudy = lazy(() => import('../components/CaseStudy.jsx'))
+const Roadmaps = lazy(() => import('../components/Roadmaps.jsx'))
+const Blog = lazy(() => import('../components/Blog.jsx'))
+
+// Fallback loading component
+const LoadingFallback = () => (
+  <div className="w-screen min-h-screen bg-black flex items-center justify-center">
+    <div className="w-8 h-8 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+  </div>
+)
+
 gsap.registerPlugin(ScrollTrigger)
 
 function Home() {
