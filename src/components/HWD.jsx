@@ -95,8 +95,8 @@ function HWD() {
 	]
 
 	return (
-		<section ref={sectionRef} className="relative sm:mt-9 md:mt-0 w-full h-[calc(100vh+12rem)] bg-linear-to-b from-black via-[#070707] to-[#161616] overflow-hidden">
-			<div className="absolute top-16 left-0 right-0 flex flex-col items-start text-start gap-6 md:px-64 px-8 z-10">
+		<section ref={sectionRef} className="relative sm:mt-6 md:mt-0 w-full h-[calc(100vh+12rem)] bg-linear-to-b from-black via-[#070707] to-[#161616] overflow-hidden">
+			<div className="absolute top-4 md:top-16 left-0 right-0 flex flex-col items-start text-start gap-6 md:px-64 px-8 z-10">
 				<div className="inline-flex items-center px-6 py-3 cursor-pointer bg-[#161616] text-slate-100 text-xs font-semibold rounded-full tracking-wider uppercase">
 					How We Do
 				</div>

@@ -47,10 +47,10 @@ export default function Roadmaps() {
   ];
 
   return (
-    <div className="w-full bg-[#050505] px-[3vw] py-32">
+    <div className="w-full bg-[#050505] md:px-[3vw] py-10 md:py-32">
       {/* Header */}
       <div className="w-full flex flex-col items-center justify-center mb-20">
-        <h1 className="font-neum leading-24 text-[8vw] md:text-[6vw] text-center mb-6 bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-600 uppercase">
+        <h1 className="font-neum md:leading-24 leading-8  text-[8vw] md:text-[6vw] text-center mb-6 bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-600 uppercase">
           Our Transformative Roadmaps
         </h1>
         <p className="font-neur text-white text-center w-full md:w-1/2 text-sm md:text-base">

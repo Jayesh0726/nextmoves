@@ -57,14 +57,14 @@ export default function CaseStudy() {
 
   return (
     <div className="w-full bg-[#050505]">
-      <div className="w-full px-[3vw] py-32 flex flex-col items-center justify-center">
+      <div className="w-full md:px-[3vw] md:py-32 py-10 flex flex-col items-center justify-center">
         <h1 className=" text-[8vw] md:text-[6vw] bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-600 uppercase text-center">
           Our Case Study
         </h1>
       </div>
         
       {caseStudies.map((study, index) => (
-        <div key={index} className="w-full h-[120vh] px-[3vw] py-32 bg-offwhite">
+        <div key={index} className="w-full h-[120vh] md:px-[3vw] md:py-32 py-2 bg-offwhite">
           <div className="w-full h-full bg-transparent flex flex-col md:flex-row items-center justify-between relative">
             {study.textLeft ? (
               <>
@@ -85,7 +85,7 @@ export default function CaseStudy() {
                 </div>
                 
                 {/* Image Section - Right */}
-                <div className="h-1/2 md:h-full w-full md:w-1/2 relative overflow-hidden">
+                <div className="h-1/2 md:h-full w-[85%] md:w-1/2 relative overflow-hidden">
                   <img
                     ref={(el) => (imageRefs.current[index * 2] = el)}
                     className="h-[130vh] w-full absolute top-0 left-0 object-cover will-change-transform"
@@ -97,10 +97,10 @@ export default function CaseStudy() {
             ) : (
               <>
                 {/* Image Section - Left */}
-                <div className="h-1/2 md:h-full w-full md:w-1/2 relative overflow-hidden">
+                <div className="h-1/2 md:h-full w-[85%] md:w-1/2 relative overflow-hidden">
                   <img
                     ref={(el) => (imageRefs.current[index * 2 + 1] = el)}
-                    className="h-[130vh] w-full absolute top-0 left-0 object-cover will-change-transform"
+                    className="h-[130vh] w-full absolute top-0 left-0 md:object-cover object-cover will-change-transform"
                     src={study.image}
                     alt={study.title}
                   />

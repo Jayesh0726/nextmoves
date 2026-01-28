@@ -2,27 +2,27 @@ import { useEffect, useState } from 'react';
 import { NoiseBackground } from './ui/noise-background.jsx';
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
+  const [blur, setBlur] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
+      const scrollY = window.scrollY;
+      setBlur(Math.min(scrollY / 100, 1)); // Adjust the divisor for sensitivity
     };
 
-    handleScroll();
-    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 px-6 md:px-12 py-6 transition-all duration-300 
-        ${isScrolled ? 'bg-transparent backdrop-blur-md' : 'bg-transparent border-b border-transparent'}`}
+        ${blur > 0 ? 'bg-black/10 backdrop-blur-md' : 'bg-transparent border-b border-transparent'}`}
     >
       <div className="flex items-center justify-between">
         {/* Logo */}
         <div className="text-white text-xl md:text-2xl font-thin tracking-[0.3em]">
-          NEXT MOVE
+          NEXMOVE
         </div>
 
         {/* Desktop Menu */}
@@ -90,7 +90,9 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="md:hidden absolute top-full left-0 right-0 bg-transparent backdrop-blur-lg py-6">
+        <div className={`md:hidden absolute top-full left-0 right-0 py-6 transition-all duration-300 ${
+          (blur > 0) ? 'bg-black/30 backdrop-blur-md' : 'bg-transparent'
+        }`}>
           <div className="flex flex-col items-center gap-6">
             <a
               href="#home"
@@ -131,7 +133,7 @@ export default function Navbar() {
               gradientColors={["rgb(255, 255, 255)", "rgb(148, 163, 184)", "rgb(255, 255, 255)"]}
               noiseIntensity={0.15}
               speed={0.05}
-              containerClassName="w-full flex justify-center"
+              containerClassName="w-42 py-2 px-0 flex justify-center"
             >
               <button className="px-6 py-2 cursor-pointer bg-[#161616] rounded-xl text-white text-sm tracking-wider transition-all duration-300 hover:bg-[#1f1f1f]">
                 GET STARTED

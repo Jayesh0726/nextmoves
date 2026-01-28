@@ -65,7 +65,7 @@ function About() {
   }, [])
 
   return (
-    <div className="w-full h-[200vh] md:h-screen  overflow-y-auto">
+    <div className="w-full h-[210vh] md:h-screen  overflow-y-auto">
       {/* Main About Section */}
       <div className="max-w-7xl mx-auto px-6 py-8 md:py-10">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">

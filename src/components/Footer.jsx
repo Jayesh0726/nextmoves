@@ -24,7 +24,7 @@ const Footer = memo(function Footer() {
               
               <div className="space-y-4 text-sm text-gray-300">
                 <div className="flex gap-3">
-                  <MapPin size={18} className="text-cyan-400 flex-shrink-0 mt-0.5" />
+                  <MapPin size={18} className="text-slate-100 flex-shrink-0 mt-0.5" />
                   <p>
                     M-3, Second floor, Neighbourhood<br />
                     Complex Sector 4, Near State Bank Of<br />
@@ -34,15 +34,15 @@ const Footer = memo(function Footer() {
                 </div>
                 
                 <div className="flex gap-3 items-center">
-                  <Mail size={18} className="text-cyan-400 flex-shrink-0" />
-                  <a href="mailto:sales@nexmoves.in" className="hover:text-cyan-400 transition-colors">
+                  <Mail size={18} className="text-slate-100 flex-shrink-0" />
+                  <a href="mailto:sales@nexmoves.in" className="hover:text-slate-200 transition-colors">
                     sales@nexmoves.in
                   </a>
                 </div>
                 
                 <div className="flex gap-3 items-center">
-                  <Phone size={18} className="text-cyan-400 flex-shrink-0" />
-                  <a href="tel:+919137361797" className="hover:text-cyan-400 transition-colors">
+                  <Phone size={18} className="text-slate-100 flex-shrink-0" />
+                  <a href="tel:+919137361797" className="hover:text-slate-200 transition-colors">
                     +91 9137361797
                   </a>
                 </div>
@@ -54,27 +54,27 @@ const Footer = memo(function Footer() {
               <h4 className="text-lg font-semibold text-white mb-4">Company</h4>
               <ul className="space-y-3 text-sm text-gray-300">
                 <li>
-                  <a href="#about" className="hover:text-cyan-400 transition-colors">
+                  <a href="#about" className="hover:text-slate-200 transition-colors">
                     About us
                   </a>
                 </li>
                 <li>
-                  <a href="#careers" className="hover:text-cyan-400 transition-colors">
+                  <a href="#careers" className="hover:text-slate-200 transition-colors">
                     Careers
                   </a>
                 </li>
                 <li>
-                  <a href="#blog" className="hover:text-cyan-400 transition-colors">
+                  <a href="#blog" className="hover:text-slate-200 transition-colors">
                     Blog
                   </a>
                 </li>
                 <li>
-                  <a href="#case-studies" className="hover:text-cyan-400 transition-colors">
+                  <a href="#case-studies" className="hover:text-slate-200 transition-colors">
                     Case Studies
                   </a>
                 </li>
                 <li>
-                  <a href="#contact" className="hover:text-cyan-400 transition-colors">
+                  <a href="#contact" className="hover:text-slate-200 transition-colors">
                     Contact
                   </a>
                 </li>
